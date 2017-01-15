@@ -1,3 +1,5 @@
+#/usr/bin/python3
+
 import time
 import requests
 import logging
@@ -6,22 +8,26 @@ import traceback
 
 
 class Market(object):
-
-    def __init__(self, symbol):
+    def __init__(self, currency, symbol,
+                 marketuri):
         """
 
         :param symbol: Symbol indicates which two currency pairs
         are polled when updating the orderbook
         """
-        self.name = self.__class__.__name__
-        self.symbol = symbol
-
+        v
+        self.currency = currency
+        self.symbol =  symbol
+        self.marketuri = marketuri
 
     def request_orderbook(self):
         """
             Will use the update_depth to
         :return: processed dictionary d['asks'] and d['bids']
         """
+        book_url = self.marketuri['orderbook'] + self.symbol
+        r = requests(book_url)
+        return r.json
 
 
     # Abstract methods
@@ -35,8 +41,10 @@ class Market(object):
         pass
 
 
+    # TODO: Define rules on how the data should be dictionarized
+    # that means what has to always be available
     # Abstract methods
-    def dictionarize_orderbook(self, orderbook ):
+    def dictionarize_orderbook(self, orderbook_dic):
         """
         Make a dictionary out of the available input data depending
         on the input provided by a certain market homogeneous
@@ -44,6 +52,8 @@ class Market(object):
         :return:
         """
         pass
+
+
     def sort_and_format(self, l, reverse=False):
         l.sort(key=lambda x: float(x['price']), reverse=reverse)
         r = []

@@ -1,4 +1,4 @@
-BTFNX_API_URL = {
+btfnx_api_url = {
     'host': 'api.bitfinex.com',
     # Public API
     'ticker': 'https://api.bitfinex.com/v1/pubticker/',
@@ -10,8 +10,13 @@ BTFNX_API_URL = {
     'symbol': 'https://api.bitfinex.com/v1/symbols',
     'symbols_details': 'https://api.bitfinex.com/v1/symbols_details',
 }
-
-KRN_API_URL = {
+btfnx_cur_symbol = {
+    "USD" : "btcusd",
+}
+krn_cur_symbol ={
+    "USD" : "XXBTCUSD",
+}
+krn_api_url = {
     'host': 'api.kraken.com',
     'order_book': 'https://api.kraken.com/0/public/Depth',
     'balance': 'https://api.kraken.com/0/private/Balance',
